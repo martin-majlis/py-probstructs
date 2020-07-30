@@ -11,5 +11,12 @@ download-probstructs:
 install:
 	pip3 install .
 
+build:
+	python3 setup.py bdist_wheel
+
+upload:
+	python3 -m twine upload dist/*
+
 test:
 	python3 tests/test.py
+

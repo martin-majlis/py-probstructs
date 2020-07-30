@@ -1,0 +1,35 @@
+# https://docs.codeclimate.com/v1.0/docs/travis-ci-test-coverage
+env:
+  global:
+    - CC_TEST_REPORTER_ID=d62b9e265b625e28f256147e9636d8fc1abe9f540d4fc82f9f8976171676cec4
+
+language: python
+python:
+- '3.4'
+- '3.5'
+- '3.6'
+- '3.7-dev'
+install:
+- pip install .
+# - pip install coverage
+# - pip install coveralls
+# before_script:
+# - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+# - chmod +x ./cc-test-reporter
+# - ./cc-test-reporter before-build
+# script:
+# - make run-coverage
+# - coverage xml
+# after_script:
+# - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+# - coveralls
+deploy:
+  provider: pypi
+  skip_existing: true
+  user: martin.majlis
+  password:
+    secure: GwW600dya+08B+vTpvMMzAannK880HSV/lSqedn3DjxOUSJTRAK0GzhG9IOYDfY4mR/1UYmklfYocjvOH/SBKEo3kfV5k6mhNYp0g2/Jem2ZOq5XyNKNCH3xuz4c7UlSA6CgRu0nzaZvACdsXA3jLJPFXBJkAJvZ4hQL5mwxurc+OeyPNTMRfgT6qB0YrZFtCW8E+rcM2Yn4HwWImDw7OaHm324wEXKTJGmeEn/x4/ZJropm8eTvNsupigp78bJGw3DdhlC2T+JM8ZtPpNOOfoP9K5OA0j5ckSWDHdQ1DVCh7kySPetrvGuWvwKQt4peAU4/03COcQzQJLf0v1I6kflTGSzRYGT9GskD/srt89znUj1MeYmR4W+nM+MqK+KUXvd2HgO8YozpngiEjfgox8VkOh7lJ/zuZNf0uBPxBWiaoYQkxN1gZ2PbqySYebpIDiVoiSiZtyxkEREEXyEoEnCcoZ9CKh90CiOXEdCCqPVFMq+Xky/AofdqCgYgJUXASB01aqUxfM6tPslBNVHn4KJSmKLrYjX9OcZhCcRKDyC+hVFnLFqsBA7ng8gjUA7itQZDmchBXqCc6PzsD3KFKGjqHFoafRGjX3pNSlTDvQojwZk6WPiJrq0llFAGs84sqJOlA7j5ofeF1XZwGLSl2SMznqFFDm57Wx+sg5p9iXs=
+  on:
+    tags: true
+after_sucess:
+- CODECLIMATE_REPO_TOKEN=d62b9e265b625e28f256147e9636d8fc1abe9f540d4fc82f9f8976171676cec4 codeclimate-test-reporter
