@@ -19,18 +19,18 @@ pypi-build:
 	export PLAT=manylinux2010_x86_64 && \
 	docker pull $$DOCKER_IMAGE && \
 	docker run --rm -e PLAT=$$PLAT -v `pwd`:/io $$DOCKER_IMAGE $$PRE_CMD /io/travis/build-wheels.sh || date
-	ls -l wheelhouse
+	ls -lrtR wheelhouse
 	export DOCKER_IMAGE=quay.io/pypa/manylinux1_i686 && \
 	export PRE_CMD=linux32 && \
 	export PLAT=manylinux1_i686 && \
 	docker pull $$DOCKER_IMAGE && \
 	docker run --rm -e PLAT=$$PLAT -v `pwd`:/io $$DOCKER_IMAGE $$PRE_CMD /io/travis/build-wheels.sh || date
-	ls -l wheelhouse
+	ls -lrtR wheelhouse
 	export DOCKER_IMAGE=quay.io/pypa/manylinux1_x86_64 && \
 	export PLAT=manylinux1_x86_64 && \
 	docker pull $$DOCKER_IMAGE && \
 	docker run --rm -e PLAT=$$PLAT -v `pwd`:/io $$DOCKER_IMAGE $$PRE_CMD /io/travis/build-wheels.sh || date
-	ls -lrt wheelhouse
+	ls -lrtR wheelhouse
 	
 
 pypi-upload:
