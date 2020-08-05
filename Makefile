@@ -31,7 +31,7 @@ pypi-build:
 	docker pull $$DOCKER_IMAGE && \
 	docker run --rm -e PLAT=$$PLAT -v `pwd`:/io $$DOCKER_IMAGE $$PRE_CMD /io/travis/build-wheels.sh || date
 	ls -lrtR wheelhouse
-	
+
 
 pypi-upload:
 	for f in `find wheelhouse -type f`; do \
@@ -39,10 +39,14 @@ pypi-upload:
 		python3 -m twine upload $$f; \
 	done;
 
-foo:
-	export FOO=10 && echo $$FOO
-	echo $$FOO
 
-test:
-	python3 tests/test.py
+run-tests:
+	python3 -m unittest discover tests/ '*test.py'
+
+run-tox:
+	tox
+
+run-coverage:
+	coverage run --source=probstructs -m unittest discover tests/ '*test.py'
+	coverage report -m
 
