@@ -17,6 +17,7 @@ function repair_wheel {
 
 # delete existing builds
 rm -rfv wheelhouse/${PLAT}/
+rm -rfv /io/wheelhouse/${PLAT}/
 
 # Compile wheels
 for PYBIN in /opt/python/*/bin; do
