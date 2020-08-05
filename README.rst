@@ -1,5 +1,5 @@
 Probabilistic Structures
-=============
+========================
 
 ``Probstructs`` is easy to use Python wrapper for C++ library `probstructs`_ . It supports Exponential Histograms, Count Min Sketch (CMS), and Exponential Count Min Sketch (ECMS).
 

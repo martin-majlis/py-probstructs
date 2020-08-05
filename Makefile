@@ -39,6 +39,9 @@ pypi-upload:
 		python3 -m twine upload $$f; \
 	done;
 
+pypi-html:
+	python3 setup.py --long-description | rst2html.py > pypi-doc.html
+
 
 run-tests:
 	python3 -m unittest discover tests/ '*test.py'
