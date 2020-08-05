@@ -10,18 +10,18 @@ python:
 - '3.6'
 install:
 - pip install .
-# - pip install coverage
-# - pip install coveralls
+- pip install coverage
+- pip install coveralls
 before_script:
 - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
 - chmod +x ./cc-test-reporter
 - ./cc-test-reporter before-build
 script:
-- make test
-# - coverage xml
+- make run-test
+- coverage xml
 after_script:
 - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-# - coveralls
+- coveralls
 deploy:
   provider: pypi
   skip_existing: true

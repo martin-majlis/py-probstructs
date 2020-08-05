@@ -3,7 +3,20 @@ from setuptools.command.build_ext import build_ext
 import sys
 import setuptools
 
+import os
+import re
+
 __version__ = '0.1.0'
+
+def fix_doc(txt):
+    return re.sub(r'\.\. PYPI-BEGIN([\r\n]|.)*?PYPI-END', '', txt, re.DOTALL)
+
+
+with open('README.rst', encoding="utf8") as fileR:
+    README = fix_doc(fileR.read())
+
+with open('CHANGES.rst', encoding="utf8") as fileC:
+    CHANGES = fix_doc(fileC.read())
 
 
 class get_pybind_include(object):
@@ -114,9 +127,11 @@ setup(
     version=__version__,
     author='Martin Majlis',
     author_email='martin@majlis.cz',
+    license='MIT',
     url='https://github.com/martin-majlis/py-probstructs',
     description='Probabilistic data structures',
-    long_description='',
+    long_description=README + '\n\n' + CHANGES,
+    keywords='probabilistic structures exponential count–min sketch histogram',
     ext_modules=ext_modules,
     setup_requires=['pybind11>=2.5.0'],
     cmdclass={'build_ext': BuildExt},
