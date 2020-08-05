@@ -9,7 +9,7 @@ namespace py = pybind11;
 
 PYBIND11_MODULE(probstructs, m) {
     m.doc() = R"pbdoc(
-        Pybind11 example plugin
+        Probstructs
         -----------------------
 
         .. currentmodule:: probstructs
@@ -17,8 +17,10 @@ PYBIND11_MODULE(probstructs, m) {
         .. autosummary::
            :toctree: _generate
 
-           add
-           subtract
+           Hash
+           CountMinSketch
+           ExponentialHistorgram
+
     )pbdoc";
 
     m.def("add", &add, R"pbdoc(

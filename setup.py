@@ -115,7 +115,7 @@ setup(
     author='Martin Majlis',
     author_email='martin@majlis.cz',
     url='https://github.com/martin-majlis/py-probstructs',
-    description='A test project using pybind11',
+    description='Probabilistic data structures',
     long_description='',
     ext_modules=ext_modules,
     setup_requires=['pybind11>=2.5.0'],
