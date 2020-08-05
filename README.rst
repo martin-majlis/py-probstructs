@@ -5,7 +5,7 @@ Probabilistic Structures
 
 .. _probstructs: https://github.com/martin-majlis/probstructs
 
-|build-status| |docs| |cc-coverage| |version| |pyversions| |github-stars-flat|
+|build-status| |docs| |version| |pyversions| |github-stars-flat|
 
 Installation
 ------------
@@ -30,8 +30,12 @@ From source:
     :target: http://py-probstructs.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 
-.. |pyversions| image:: https://img.shields.io/pypi/pyversions/py-probstructs.svg?style=flat
-	:target: https://pypi.python.org/pypi/py-probstructs
+.. |version| image:: https://img.shields.io/pypi/v/probstructs.svg?style=flat
+	:target: https://pypi.python.org/pypi/probstructs
+	:alt: Version
+
+.. |pyversions| image:: https://img.shields.io/pypi/pyversions/probstructs.svg?style=flat
+	:target: https://pypi.python.org/pypi/probstructs
 	:alt: Py Versions
 
 .. |github-stars-flat| image:: https://img.shields.io/github/stars/martin-majlis/py-probstructs.svg?style=flat&label=Stars

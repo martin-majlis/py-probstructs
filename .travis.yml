@@ -5,9 +5,12 @@ env:
 
 language: python
 python:
-# - '3.4'
-# - '3.5'
+- '3.4'
+- '3.5'
 - '3.6'
+- '3.7'
+- '3.8'
+- '3.9'
 install:
 - pip install .
 - pip install coverage
@@ -17,7 +20,7 @@ before_script:
 - chmod +x ./cc-test-reporter
 - ./cc-test-reporter before-build
 script:
-- make run-test
+- make run-tests
 - coverage xml
 after_script:
 - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
