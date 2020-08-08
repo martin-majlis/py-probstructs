@@ -132,6 +132,8 @@ C++ documentation: https://probstructs.readthedocs.io/en/latest/classes.html#exp
     print(ecm_sketch.get(key="ddd", window=4, tick=ts))
     # 0
 
+.. PYPI-BEGIN
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
@@ -139,6 +141,10 @@ C++ documentation: https://probstructs.readthedocs.io/en/latest/classes.html#exp
    CHANGES
 
 :ref:`genindex`
+
+.. PYPI-END
+
+
 
 
 .. |build-status| image:: https://travis-ci.org/martin-majlis/py-probstructs.svg?branch=master
