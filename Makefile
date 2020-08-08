@@ -1,14 +1,28 @@
 LIB_NAME=probstructs
-LIB_VERSION=0.3.1
+LIB_VERSION=0.4.0
 
-src/src/prob_structs.h: download-probstructs
+# You can set these variables from the command line.
+SPHINXOPTS    =
+SPHINXBUILD   = python3 -msphinx
+SPHINXPROJ    = Wikipedia-API
+SOURCEDIR     = .
+BUILDDIR      = _build
+
+# Put it first so that "make" without argument is like "make help".
+help:
+	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+
 
 download-probstructs:
+	rm -rfv probstructs/$(LIB_NAME) && \
+	make probstructs/probstructs/probstructs.h
+
+probstructs/probstructs/probstructs.h:
 	curl -o /tmp/v$(LIB_VERSION).tar.gz https://codeload.github.com/martin-majlis/$(LIB_NAME)/tar.gz/v$(LIB_VERSION) && \
 	(cd /tmp; tar -xzf /tmp/v$(LIB_VERSION).tar.gz) && \
-	cp -r /tmp/$(LIB_NAME)-$(LIB_VERSION)/src src/$(LIB_NAME)
+	cp -r /tmp/$(LIB_NAME)-$(LIB_VERSION)/probstructs probstructs/$(LIB_NAME)
 
-install:
+install: probstructs/probstructs/probstructs.h
 	pip3 install .
 
 build:
@@ -53,3 +67,5 @@ run-coverage:
 	coverage run --source=probstructs -m unittest discover tests/ '*test.py'
 	coverage report -m
 
+%: Makefile
+	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)

@@ -6,7 +6,7 @@ import setuptools
 import os
 import re
 
-__version__ = '0.1.1'
+__version__ = '0.2.0'
 
 def fix_doc(txt):
     return re.sub(r'\.\. PYPI-BEGIN([\r\n]|.)*?PYPI-END', '', txt, re.DOTALL)
@@ -37,11 +37,11 @@ ext_modules = [
         # Sort input source files to ensure bit-for-bit reproducible builds
         # (https://github.com/pybind/python_example/pull/53)
         sorted([
-            'src/main.cpp',
+            'probstructs/main.cpp',
             # 'src/src/MurmurHash3.h',
-            'src/probstructs/MurmurHash3.cpp',
+            'probstructs/probstructs/MurmurHash3.cpp',
             # 'src/src/prob_structs.h',
-            'src/probstructs/probstructs.cpp',
+            'probstructs/probstructs/probstructs.cpp',
         ]),
         include_dirs=[
             # Path to pybind11 headers
@@ -138,4 +138,19 @@ setup(
     setup_requires=['pybind11>=2.5.0'],
     cmdclass={'build_ext': BuildExt},
     zip_safe=False,
+    classifiers=[
+        'Development Status :: 4 - Beta',
+        'Intended Audience :: Developers',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: Implementation :: CPython',
+        'Programming Language :: Python :: Implementation :: PyPy',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
+        'Topic :: Software Development :: Libraries :: Python Modules',
+    ],
 )
