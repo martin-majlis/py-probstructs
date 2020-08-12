@@ -135,10 +135,11 @@ C++ documentation: https://probstructs.readthedocs.io/en/latest/classes.html#exp
 .. PYPI-BEGIN
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
 
    CHANGES
+   API
 
 :ref:`genindex`
 

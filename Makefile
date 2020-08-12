@@ -67,5 +67,10 @@ run-coverage:
 	coverage run --source=probstructs -m unittest discover tests/ '*test.py'
 	coverage report -m
 
-%: Makefile
+run-gen-doc: clean install html
+
+%:
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+
+clean:
+	rm -rfv _build _autosummary
