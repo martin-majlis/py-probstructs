@@ -69,8 +69,10 @@ run-coverage:
 
 run-gen-doc: clean install html
 
+clean:
+	rm -rfv _build _autosummary
+
 %:
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-clean:
-	rm -rfv _build _autosummary
+
