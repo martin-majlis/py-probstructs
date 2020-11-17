@@ -39,10 +39,10 @@ jobs:
         if: runner.os == 'Windows'
         run: |
           choco install vcredist2015 -f -y
-      - name: Install Visual Studio 2015
+      - name: Install libffi
         if: runner.os == 'macOS'
         run: |
-          brew install libffi
+          brew install libffi && ls - lR /usr/lib/
       - name: Build wheels
         run: |
           python -m cibuildwheel --output-dir wheelhouse
