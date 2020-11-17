@@ -121,7 +121,7 @@ release:
 	sed -ri 's/^version = .*/version = "'$$short_VERSION'"/' conf.py; \
 	git commit setup.py conf.py -m "Update version to $(VERSION) for new release."; \
 	git push; \
-	git tag $(VERSION) -m "$(MSG)"; \
+	git tag v$(VERSION) -m "$(MSG)"; \
 	git push --tags origin master
 
 %:
