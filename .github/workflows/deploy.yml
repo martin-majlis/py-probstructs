@@ -39,10 +39,10 @@ jobs:
         if: runner.os == 'Windows'
         run: |
           choco install vcredist2015 -f -y
-      - name: Install libffi
+      - name: Copy libffi to expected location
         if: runner.os == 'macOS'
         run: |
-          brew install libffi && ls - lR /usr/lib/
+          mkdir -p /usr/local/opt/libffi/lib/; cp /usr/lib/libffi.dylib /usr/local/opt/libffi/lib/libffi.6.dylib
       - name: Build wheels
         run: |
           python -m cibuildwheel --output-dir wheelhouse
