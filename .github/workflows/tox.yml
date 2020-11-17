@@ -1,10 +1,9 @@
-name: Python package
+name: Tests - TOX
 
 on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -21,4 +20,3 @@ jobs:
       - name: Run Tox
         # Run tox using the version of Python in `PATH`
         run: tox -e py
-        # run: make run-tox
