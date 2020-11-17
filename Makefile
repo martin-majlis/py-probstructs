@@ -60,6 +60,7 @@ pypi-html:
 run-tests:
 	python3 -m unittest discover tests/ '*test.py'
 
+# You should run requirements-dev and requirements-dev-system to be able to run tox
 run-tox:
 	tox
 
@@ -71,6 +72,12 @@ run-gen-doc: clean install html
 
 clean:
 	rm -rfv _build _autosummary
+
+requirements-dev:
+	pip install --upgrade -r dev-requirements.txt
+
+requirements-dev-system:
+	apt-get install python3.5-dev python3.6-dev python3.7-dev python3.8-dev
 
 %:
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)

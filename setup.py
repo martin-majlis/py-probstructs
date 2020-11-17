@@ -15,6 +15,7 @@ def fix_doc(txt):
 with open('README.rst') as fileR:
     README = fix_doc(fileR.read())
 
+
 with open('CHANGES.rst') as fileC:
     CHANGES = fix_doc(fileC.read())
 
