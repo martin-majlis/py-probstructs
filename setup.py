@@ -129,7 +129,7 @@ class BuildExt(build_ext):
 
 setup(
     name='probstructs',
-    version="0.2.4",
+    version="0.2.5",
     author='Martin Majlis',
     author_email='martin@majlis.cz',
     license='MIT',
