@@ -79,6 +79,49 @@ requirements-dev:
 requirements-dev-system:
 	apt-get install python3.5-dev python3.6-dev python3.7-dev python3.8-dev
 
+release: pre-release-check
+	if [ "x$(MSG)" = "x" -o "x$(VERSION)" = "x" ]; then \
+		echo "Use make release MSG='some msg' VERSION='1.2.3'"; \
+		exit 1; \
+	fi; \
+	version=`grep __version__ setup.py | sed -r 's/.*= \( *(.*), *(.*), *(.*)\)/\1.\2.\3/'`; \
+	if [ "x$$version" = "x" ]; then \
+		echo "Unable to extract version"; \
+		exit 1; \
+	fi; \
+	echo "Current version: $$version"; \
+	as_number() { \
+		total=0; \
+		for p in `echo $$1 | tr "." "\n"`; do \
+			total=$$(( $$total * 1000 + $$p )); \
+		done; \
+		echo $$total; \
+	}; \
+	number_dots=`echo -n $(VERSION) | sed -r 's/[^.]//g' | wc -c`; \
+	if [ ! "$${number_dots}" = "2" ]; then \
+		echo "Version has to have format X.Y.Z"; \
+		echo "Specified version is $(VERSION)"; \
+		exit 2; \
+	fi; \
+	number_version=`as_number $$version`; \
+	number_VERSION=`as_number $(VERSION);`; \
+	if [ $$number_version -ge $$number_VERSION ]; then \
+		echo -n "Specified version $(VERSION) ($$number_VERSION) is lower than"; \
+		echo "current version $$version ($$number_version)"; \
+		echo "New version has to be greater"; \
+		exit 2; \
+	fi; \
+	short_VERSION=`echo $(VERSION) | cut -f1-2 -d.`; \
+	commas_VERSION=`echo $(VERSION) | sed -r 's/\./, /g'`; \
+	echo "Short version: $$short_VERSION"; \
+	sed -ri 's/version=.*/version="'$(VERSION)'",/' setup.py; \
+	sed -ri 's/^release = .*/release = "'$(VERSION)'"/' conf.py; \
+	sed -ri 's/^version = .*/version = "'$$short_VERSION'"/' conf.py; \
+	git commit setup.py conf.py -m "Update version to $(VERSION) for new release."; \
+	git push; \
+	git tag $(VERSION) -m "$(MSG)"; \
+	git push --tags origin master
+
 %:
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
