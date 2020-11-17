@@ -30,10 +30,10 @@ jobs:
       - name: Install cibuildwheel
         run: |
           python -m pip install cibuildwheel
-      - name: Install Visual C++ for Python 2.7
+      - name: Install Python 3
         if: runner.os == 'Windows'
         run: |
-          choco install vcpython27 -f -y
+          choco install python3 -f -y
       - name: Install Visual Studio 2015
         if: runner.os == 'Windows'
         run: |
