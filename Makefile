@@ -79,7 +79,9 @@ requirements-dev:
 requirements-dev-system:
 	apt-get install python3.5-dev python3.6-dev python3.7-dev python3.8-dev
 
-release: pre-release-check
+pre-release-check: run-tox
+
+release:
 	if [ "x$(MSG)" = "x" -o "x$(VERSION)" = "x" ]; then \
 		echo "Use make release MSG='some msg' VERSION='1.2.3'"; \
 		exit 1; \
