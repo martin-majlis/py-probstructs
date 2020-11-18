@@ -155,9 +155,5 @@ PYBIND11_MODULE(probstructs, m) {
             py::arg("key")
         );
 
-#ifdef VERSION_INFO
-    m.attr("__version__") = VERSION_INFO;
-#else
-    m.attr("__version__") = "dev";
-#endif
+    m.attr("__version__") = "0.2.5";
 }
