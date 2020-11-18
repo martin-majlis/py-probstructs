@@ -231,9 +231,9 @@ namespace probstructs {
                 // we have to move stuff around
                 float diff = 0;
 
-                uint b = size - 1;
+                uint32_t b = size - 1;
                 while ( b >= 0 ) {
-                    uint w = window_size(b);
+                    uint32_t w = window_size(b);
                     // figure out how much stuff should be moved
                     if (tick_diff >= w) {
                         diff = counts[b];
@@ -309,7 +309,7 @@ namespace probstructs {
             float res = 0;
             uint32_t b = 0;
             while ( b < size && window > 0) {
-                uint w = window_size(b);
+                uint32_t w = window_size(b);
                 if (window >= w) {
                     res += counts[b];
                     window -= w;
@@ -360,7 +360,7 @@ namespace probstructs {
             for(int i = 0; i < depth; i++)
             {
                 counter[i] = new ExponentialHistorgram<T>[width];
-                for (uint j = 0; j < width; ++j) {
+                for (uint32_t j = 0; j < width; ++j) {
                     counter[i][j] = ExponentialHistorgram<T>(window);
                 }
                 hash[i] = new Hash(i);

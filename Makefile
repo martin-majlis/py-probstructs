@@ -119,7 +119,8 @@ release:
 	sed -ri 's/version=.*/version="'$(VERSION)'",/' setup.py; \
 	sed -ri 's/^release = .*/release = "'$(VERSION)'"/' conf.py; \
 	sed -ri 's/^version = .*/version = "'$$short_VERSION'"/' conf.py; \
-	git commit setup.py conf.py -m "Update version to $(VERSION) for new release."; \
+	sed -ri 's/attr\("__version__"\) = .*/attr("__version__") = "'$(VERSION)'";/' probstructs/main.cpp; \
+	git commit setup.py conf.py probstructs/main.cpp -m "Update version to $(VERSION) for new release."; \
 	git push; \
 	git tag v$(VERSION) -m "$(MSG)"; \
 	git push --tags origin master

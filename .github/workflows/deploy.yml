@@ -16,8 +16,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
-#        os: [ubuntu-latest, windows-latest, macos-latest]
+#        os: [windows-latest]
+        os: [ubuntu-latest, windows-latest, macos-latest]
         python: [3.5, 3.6, 3.7, 3.8]
 
     steps:
@@ -35,10 +35,11 @@ jobs:
         if: runner.os == 'Windows'
         run: |
           choco install python3 -f -y
-      - name: Install Visual Studio 2015
+      - name: Install Visual Studio 2019
         if: runner.os == 'Windows'
         run: |
-          choco install vcredist2015 -f -y
+          choco install visualstudio2019buildtools
+#          choco install vcredist2015 -f -y
       - name: Copy libffi to expected location
         if: runner.os == 'macOS'
         run: |
@@ -46,6 +47,8 @@ jobs:
       - name: Build wheels
         run: |
           python -m cibuildwheel --output-dir wheelhouse
+        env:
+          CIBW_SKIP: cp27-win*
       - uses: actions/upload-artifact@v2
         with:
           path: ./wheelhouse/*.whl
