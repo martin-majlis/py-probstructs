@@ -122,6 +122,7 @@ release:
 	commas_VERSION=`echo $(VERSION) | sed -r 's/\./, /g'`; \
 	echo "Short version: $$short_VERSION"; \
 	sed -ri 's/version=.*/version="'$(VERSION)'",/' setup.py; \
+	sed -ri 's/__version__ = .*/__version__ = "'$(VERSION)'",/' setup.py; \
 	sed -ri 's/^release = .*/release = "'$(VERSION)'"/' conf.py; \
 	sed -ri 's/^version = .*/version = "'$$short_VERSION'"/' conf.py; \
 	sed -ri 's/attr\("__version__"\) = .*/attr("__version__") = "'$(VERSION)'";/' probstructs/main.cpp; \

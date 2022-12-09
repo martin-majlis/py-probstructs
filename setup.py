@@ -8,7 +8,7 @@ import setuptools
 import os
 import re
 
-__version__ = '0.2.1'
+__version__ = '0.2.6'
 
 def fix_doc(txt):
     return re.sub(r'\.\. PYPI-BEGIN([\r\n]|.)*?PYPI-END', '', txt, re.DOTALL)
