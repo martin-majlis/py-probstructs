@@ -44,8 +44,7 @@ jobs:
         if: runner.os == 'macOS'
         run: |
           ls -l /usr/lib/
-          brew reinstall libffi
-          mkdir -p /usr/local/opt/libffi/lib/; cp /usr/lib/libffi.dylib /usr/local/opt/libffi/lib/libffi.6.dylib
+          mkdir -p /usr/local/opt/libffi/lib/; cp libffi-trampolines.dylib /usr/local/opt/libffi/lib/libffi.6.dylib
       - name: Build wheels
         run: |
           python -m cibuildwheel --output-dir wheelhouse
