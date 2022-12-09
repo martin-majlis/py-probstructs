@@ -43,6 +43,8 @@ jobs:
       - name: Copy libffi to expected location
         if: runner.os == 'macOS'
         run: |
+          ls -l /usr/lib/
+          brew reinstall libffi
           mkdir -p /usr/local/opt/libffi/lib/; cp /usr/lib/libffi.dylib /usr/local/opt/libffi/lib/libffi.6.dylib
       - name: Build wheels
         run: |
