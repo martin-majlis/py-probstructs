@@ -74,6 +74,11 @@ clean:
 	rm -rfv _build _autosummary
 
 requirements-dev:
+	python -m pip install --user pipx
+	python -m pipx ensurepath
+	python -m pip install pipx-in-pipx --user
+	pip install --upgrade pip
+	pipx install tox
 	pip install --upgrade -r dev-requirements.txt
 
 requirements-dev-system:

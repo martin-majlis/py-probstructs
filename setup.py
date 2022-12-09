@@ -14,12 +14,14 @@ def fix_doc(txt):
     return re.sub(r'\.\. PYPI-BEGIN([\r\n]|.)*?PYPI-END', '', txt, re.DOTALL)
 
 
-with open('README.rst') as fileR:
-    README = fix_doc(fileR.read())
+# with open('README.rst') as fileR:
+#     README = fix_doc(fileR.read())
 
 
-with open('CHANGES.rst') as fileC:
-    CHANGES = fix_doc(fileC.read())
+# with open('CHANGES.rst') as fileC:
+#     CHANGES = fix_doc(fileC.read())
+README="README"
+CHANGES="CHANGES"
 
 
 class get_pybind_include(object):
