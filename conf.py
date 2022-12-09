@@ -172,8 +172,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'MailGunV3', 'MailGun V3 Documentation',
-     author, 'MailGunV3', 'One line description of project.',
+    (master_doc, 'py-probstructs', 'Probabilistic Structures Documentation',
+     author, 'probstructs', 'Probabilistic structures.',
      'Miscellaneous'),
 ]
 

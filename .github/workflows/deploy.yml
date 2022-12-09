@@ -1,7 +1,8 @@
 name: Build and upload to PyPI
 
 # Build on every branch push, tag push, and pull request change:
-on: [push, pull_request]
+# on: [push, pull_request]
+on: [push]
 # Alternatively, to publish when a (published) GitHub Release is created, use the following:
 # on:
 #   push:
@@ -18,7 +19,7 @@ jobs:
       matrix:
 #        os: [windows-latest]
         os: [ubuntu-latest, windows-latest, macos-latest]
-        python: [3.5, 3.6, 3.7, 3.8]
+        python: ['3.7', '3.8', '3.9', '3.10']
 
     steps:
       - uses: actions/checkout@v2
@@ -43,7 +44,8 @@ jobs:
       - name: Copy libffi to expected location
         if: runner.os == 'macOS'
         run: |
-          mkdir -p /usr/local/opt/libffi/lib/; cp /usr/lib/libffi.dylib /usr/local/opt/libffi/lib/libffi.6.dylib
+          ls -l /usr/lib/
+          mkdir -p /usr/local/opt/libffi/lib/; cp /usr/lib/libffi-trampolines.dylib /usr/local/opt/libffi/lib/libffi.6.dylib
       - name: Build wheels
         run: |
           python -m cibuildwheel --output-dir wheelhouse
