@@ -1,2 +1,4 @@
 nose
 tox-wheel
+py
+pytest
