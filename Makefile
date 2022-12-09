@@ -4,7 +4,7 @@ LIB_VERSION=0.4.0
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = python3 -msphinx
-SPHINXPROJ    = Wikipedia-API
+SPHINXPROJ    = Py-ProbStructs
 SOURCEDIR     = .
 BUILDDIR      = _build
 
@@ -74,10 +74,15 @@ clean:
 	rm -rfv _build _autosummary
 
 requirements-dev:
+	python -m pip install --user pipx
+	python -m pipx ensurepath
+	python -m pip install pipx-in-pipx --user
+	pip install --upgrade pip
+	pipx install tox==3.27.1
 	pip install --upgrade -r dev-requirements.txt
 
 requirements-dev-system:
-	apt-get install python3.5-dev python3.6-dev python3.7-dev python3.8-dev
+	apt-get install python3.6-dev python3.7-dev python3.8-dev python3.9-dev python3.10-dev python3.11-dev
 
 pre-release-check: run-tox
 
@@ -117,6 +122,7 @@ release:
 	commas_VERSION=`echo $(VERSION) | sed -r 's/\./, /g'`; \
 	echo "Short version: $$short_VERSION"; \
 	sed -ri 's/version=.*/version="'$(VERSION)'",/' setup.py; \
+	sed -ri 's/__version__ = .*/__version__ = "'$(VERSION)'",/' setup.py; \
 	sed -ri 's/^release = .*/release = "'$(VERSION)'"/' conf.py; \
 	sed -ri 's/^version = .*/version = "'$$short_VERSION'"/' conf.py; \
 	sed -ri 's/attr\("__version__"\) = .*/attr("__version__") = "'$(VERSION)'";/' probstructs/main.cpp; \

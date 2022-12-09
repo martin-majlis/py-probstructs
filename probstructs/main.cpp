@@ -155,5 +155,5 @@ PYBIND11_MODULE(probstructs, m) {
             py::arg("key")
         );
 
-    m.attr("__version__") = "0.2.6";
+    m.attr("__version__") = "0.2.8";
 }
