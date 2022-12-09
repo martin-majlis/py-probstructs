@@ -8,7 +8,7 @@ import setuptools
 import os
 import re
 
-__version__ = '0.2.6'
+__version__ = "0.2.7",
 
 def fix_doc(txt):
     return re.sub(r'\.\. PYPI-BEGIN([\r\n]|.)*?PYPI-END', '', txt, re.DOTALL)
@@ -131,7 +131,7 @@ class BuildExt(build_ext):
 
 setup(
     name='probstructs',
-    version="0.2.6",
+    version="0.2.7",
     author='Martin Majlis',
     author_email='martin@majlis.cz',
     license='MIT',
