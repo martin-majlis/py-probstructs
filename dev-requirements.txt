@@ -1,3 +1,4 @@
+tox==3.27.1
 nose
 tox-wheel
 py
