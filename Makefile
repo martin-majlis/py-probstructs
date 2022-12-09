@@ -78,7 +78,7 @@ requirements-dev:
 	python -m pipx ensurepath
 	python -m pip install pipx-in-pipx --user
 	pip install --upgrade pip
-	pipx install tox
+	pipx install tox==3.27.1
 	pip install --upgrade -r dev-requirements.txt
 
 requirements-dev-system:
