@@ -4,7 +4,7 @@ LIB_VERSION=0.4.0
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = python3 -msphinx
-SPHINXPROJ    = Wikipedia-API
+SPHINXPROJ    = Py-ProbStructs
 SOURCEDIR     = .
 BUILDDIR      = _build
 
@@ -77,7 +77,7 @@ requirements-dev:
 	pip install --upgrade -r dev-requirements.txt
 
 requirements-dev-system:
-	apt-get install python3.5-dev python3.6-dev python3.7-dev python3.8-dev
+	apt-get install python3.6-dev python3.7-dev python3.8-dev python3.9-dev python3.10-dev python3.11-dev
 
 pre-release-check: run-tox
 
